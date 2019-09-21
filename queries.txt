@@ -1,0 +1,23 @@
+create table user(
+   id INT NOT NULL,
+   user VARCHAR(100) NOT NULL,
+   password VARCHAR(100) NOT NULL,
+   PRIMARY KEY ( id )
+);
+
+ALTER TABLE user MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
+
+create table message(
+    id INT NOT NULL AUTO_INCREMENT,
+    senderid INT NOT NULL,
+    receiverid INT NOT NULL,
+    message VARCHAR(55535) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (senderid) REFERENCES user(id),
+    FOREIGN KEY (receiverid) REFERENCES user(id)
+);
+
+insert into user (user, password) VALUES ("jim", "pamela");
+insert into user (user, password) VALUES ("dwight", "arm");
+
+insert into message (senderid, receiverid, message) VALUES (1, 2, "Guten morgen");
